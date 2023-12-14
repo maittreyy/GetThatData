@@ -1,0 +1,42 @@
+version: "3.0"
+
+stories:
+
+- story: initiate conversation
+  steps:
+    - intent: greet
+    - action: action_provide_details
+    - intent: extract_name
+    - action: action_extract_name
+    - intent: extract_phone_number
+    - action: action_extract_phone_number
+    - intent: extract_address
+    - action: action_extract_address
+    - intent: extract_date_of_birth
+    - action: action_extract_date_of_birth
+    - intent: extract_education
+    - action: action_extract_education
+    - action: utter_closing
+
+- story: initiate conversation with entities
+  steps:
+    - intent: greet
+    - action: action_provide_details
+    - intent: hesitant
+    - action: action_hesitant_small_talk
+    - intent: small_talk
+    - action: action_hesitant_small_talk
+    - intent: provide_details
+    - entities:
+        - name: "John Doe"
+        - phone_number: "1234567890"
+        - address: "123 Main St, City"
+        - date_of_birth: "1990-01-01"
+        - education: "Bachelor's in Computer Science"
+    - action: action_provide_details
+    - action: utter_closing
+
+- story: Handle deny intent
+  steps:
+    - intent: deny
+    - action: utter_deny_response

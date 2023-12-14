@@ -1,0 +1,11 @@
+version: "3.1"
+
+
+rules:
+
+- rule: Initiate conversation and ask for information
+  steps:
+  - intent: greet
+  - action: action_provide_details
+
+
