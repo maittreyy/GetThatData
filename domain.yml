@@ -1,0 +1,111 @@
+version: "3.1"
+
+intents:
+  - greet
+  - hesitant
+  - small_talk
+  - provide_details
+  - extract_name
+  - extract_phone_number
+  - extract_address
+  - extract_date_of_birth
+  - extract_education
+  - deny
+
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: name
+
+  email:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: email
+
+  phone_number:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: phone_number
+
+  address:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: address
+
+  date_of_birth:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: date_of_birth
+
+  education:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: education
+
+entities:
+  - name
+  - email
+  - phone_number
+  - address
+  - date_of_birth
+  - education
+
+
+
+responses:
+  utter_greet:
+    - text: "Hello! How can I assist you today?"
+  utter_hesitant_small_talk:
+    - text: "No worries! Let's chat about something else. How's the weather today?"
+  utter_provide_details:
+    - text: "Sure, please provide me with your details."
+  utter_extract_name:
+    - text: "Got it! Your name is {name}."
+  utter_extract_phone_number:
+    - text: "Thanks for sharing! Your phone number is {phone_number}."
+  utter_extract_address:
+    - text: "Great! Your address is {address}."
+  utter_extract_date_of_birth:
+    - text: "Noted! Your date of birth is {date_of_birth}."
+  utter_extract_education:
+    - text: "Excellent! You have an educational background in {education}."
+  utter_verify_information:
+    - text: "Please verify the information provided:"
+    - text: "Can you confirm the details you provided?"
+  utter_closing:
+    - text: "Thank you for providing the information. Have a great day!"
+  utter_deny_response:
+    - text: "It's okay if you're not comfortable sharing details. Let me know if there's anything else I can assist you with. If you change your mind and want to provide details, just let me know!"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+
+
+actions:
+  - action_hesitant_small_talk
+  - action_provide_details
+  - action_extract_name
+  - action_extract_phone_number
+  - action_extract_address
+  - action_extract_date_of_birth
+  - action_extract_education
+  - utter_greet
+  - utter_provide_details
+  - utter_verify_information
+  - utter_extract_name
+  - utter_extract_phone_number
+  - utter_extract_address
+  - utter_extract_date_of_birth
+  - utter_extract_education
+  - utter_hesitant_small_talk
+  - utter_closing
